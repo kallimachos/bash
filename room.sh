@@ -2,7 +2,7 @@
 
 file="/home/bmoss/Documents/personal/The_Room"
 if [ "$1" = "" ]; then
-	go $file
+	gnome-open $file
 else
 	echo >> "$file"
 	echo $1 >> "$file"
