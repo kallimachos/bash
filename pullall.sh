@@ -1,5 +1,14 @@
 #!/bin/bash
 
-for dir in ~/csp/cloudforms/*; do (cd "$dir" && csprocessor pull); done
-for dir in ~/csp/enterprise/*; do (cd "$dir" && csprocessor pull); done
-for dir in ~/csp/online/*; do (cd "$dir" && csprocessor pull); done
+#run kinit if required
+bash /home/bmoss/scripts/bash/testdate.sh
+
+#csprocessor repos
+bash /home/bmoss/scripts/bash/pullcsp.sh
+
+#git repos
+bash /home/bmoss/scripts/bash/pullos.sh
+bash /home/bmoss/scripts/bash/mygit.sh
+
+#svn repos
+for dir in ~/CloudForms/*; do (cd "$dir" && echo 'CloudForms' && svn up && echo); done
