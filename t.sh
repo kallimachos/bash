@@ -23,8 +23,9 @@ elif [ "$1" = "reset" ]; then
 elif [ "$1" = "path" ]; then
 	echo && head $doc && echo
 elif [ "$1" = "set" ]; then
-	echo $2 > "$doc"
-	echo -e "\nPath set to: $2\n"
+	name=$(readlink -f $2)
+	echo $name > "$doc"
+	echo -e "\nPath set to: $name\n"
 else
 	echo -e "\nUsage: t <command> [path]\n"
 	echo "t          runs app"
