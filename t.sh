@@ -11,7 +11,7 @@ function run_app {
 		source ~/.bashrc
 		source $app
 	else
-		python $app
+		python3 $app
 	fi
 }
 
