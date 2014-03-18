@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file="/home/bmoss/Documents/personal/The_Room"
+file="/home/bmoss/Dropbox/The_Room.txt"
 if [ "$1" = "" ]; then
 	gnome-open $file
 else
