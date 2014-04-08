@@ -4,6 +4,9 @@ file="/home/bmoss/Dropbox/The_Room.txt"
 backup="/home/bmoss/Documents/personal/The_Room.txt"
 if [ "$1" = "" ]; then
 	gnome-open $file
+elif [ "$1" = "wc" ]; then
+	echo "Word count: "
+	wc -w $file
 else
 	echo >> "$file"
 	echo $1 >> "$file"
