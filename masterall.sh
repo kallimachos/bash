@@ -4,6 +4,6 @@ for dir in ~/OpenShift/*; do
 	cd "$dir"
 	if test -e .git; then
 		echo $dir
-		git pull && echo
+		git checkout master && echo
 	fi
 done

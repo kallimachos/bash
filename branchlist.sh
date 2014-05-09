@@ -3,7 +3,7 @@
 for dir in ~/OpenShift/*; do
 	cd "$dir"
 	if test -e .git; then
-		echo $dir
-		git pull && echo
+		echo -e "\e[1;35m$dir\e[00m"
+		git branch -a && echo
 	fi
 done
