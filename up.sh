@@ -11,4 +11,5 @@ for dir in ~/CloudForms/*; do
 	fi
 done
 
-for dir in ~/csp/cloudforms/*; do (cd "$dir" && csprocessor pull); done
+for dir in ~/csp/cloudforms/3.0/*; do (cd "$dir" && csprocessor pull); done
+for dir in ~/csp/cloudforms/3.1/*; do (cd "$dir" && csprocessor pull); done
