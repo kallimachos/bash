@@ -9,7 +9,7 @@ tech=$loc/Technical_Notes
 
 echo -n "View packages (y/n): "
 read packages
-rm $loc/packages.txt
+test -e $loc/packages.txt && rm $loc/packages.txt
 
 if [ "$packages" == "y" ]; then
 	echo "Building packages..."

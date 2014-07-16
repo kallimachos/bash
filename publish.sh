@@ -14,8 +14,8 @@ if [ "$books" == "c" ]; then
 	echo "Publish cancelled on user command."
 	exit 1
 else
+	test -e $loc/packages.txt && rm $loc/packages.txt
 	echo "Building packages..."
-	rm $loc/packages.txt
 
 	if [ "$books" == "a" ]; then
 		for dir in $loc/*; do
