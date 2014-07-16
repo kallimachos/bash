@@ -47,14 +47,14 @@ if [ "$confirm" == "y" ]; then
 		read books
 	fi
 	if [ "$books" == "a" ]; then
-		for dir in $loc/*; do (cd "$dir" && csprocessor publish --hide-output); done
+		for dir in $loc/*; do (cd "$dir" && csprocessor publish); done
 	elif [ "$books" == "r" ]; then
-		cd $rel && csprocessor publish --hide-output
-		cd $tech && csprocessor publish --hide-output
+		cd $rel && csprocessor publish
+		cd $tech && csprocessor publish
 	elif [ "$books" == "e" ]; then
 		for dir in $loc/*; do
 			if [ "$dir" != $rel -a "$dir" != $tech ] ; then
-				cd "$dir" && csprocessor publish --hide-output
+				cd "$dir" && csprocessor publish
 			fi
 		done
     else
