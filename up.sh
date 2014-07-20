@@ -2,6 +2,10 @@
 
 bash /home/bmoss/scripts/bash/testdate.sh
 
+sudo yum update -y --skip-broken
+
+echo
+
 for dir in ~/CloudForms/*; do
 	if test -d "$dir"; then
 		cd "$dir"
