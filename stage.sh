@@ -7,6 +7,12 @@ loc=~/csp/cloudforms/$version
 rel=$loc/Release_Notes
 tech=$loc/Technical_Notes
 
+function packagelist {
+	package=$(publican package --lang en-US | tail --lines=1)
+	package=${package#*rpm/} && package=${package/.src*/eng}
+	echo $package && echo $package >> $loc/packages.txt
+}
+
 echo -n "View packages (y/n): "
 read packages
 test -e $loc/packages.txt && rm $loc/packages.txt
@@ -15,8 +21,7 @@ if [ "$packages" == "y" ]; then
 	echo "Building packages..."
     for dir in $loc/*; do
 		cd "$dir"/assembly/publican
-		package=$(publican package --lang en-US | tail --lines=1)
-		echo ${package#*rpm/}
+		packagelist
 	done
     echo
 fi
