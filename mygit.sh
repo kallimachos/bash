@@ -1,22 +1,19 @@
 #!/bin/bash
 
 for dir in ~/code/*; do
-	cd "$dir"
-	if test -e .git; then
-		git pull
+	if test -d $dir && test -e $dir/.git; then
+        cd $dir && git pull
 	fi
 done
 
 for dir in ~/code/python/*; do
-	cd "$dir"
-	if test -e .git; then
-		git pull
+	if test -d $dir && test -e $dir/.git; then
+        cd $dir && git pull
 	fi
 done
 
 for dir in ~/scripts/*; do
-	cd "$dir"
-	if test -e .git; then
-		git pull
+	if test -d $dir && test -e $dir/.git; then
+        cd $dir && git pull
 	fi
 done
