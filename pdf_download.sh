@@ -66,6 +66,7 @@ if [ $version == '3.1' ]; then
     cp Lifecycle_and_Automation_Guide.pdf cfme_automate.pdf
     cp Quick_Start_Guide.pdf cfme_quickstart.pdf
     cp Settings_and_Operations_Guide.pdf cfme_settingandops.pdf
+    tar -cvzf cfme_docs.tar.gz cfme_*.pdf
 fi
 
 cd $loc
