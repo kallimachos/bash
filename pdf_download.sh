@@ -7,13 +7,10 @@ read version
 echo
 
 output=~/Desktop/$version
+output+=_docs
 
-if test -d $output; then
-    cd $output
-else
-    mkdir $output
-    cd $output
-fi
+if test ! -d $output; then mkdir $output; fi
+cd $output
 
 if [ $version == 'beta' ]; then
     route=http://documentation-devel.engineering.redhat.com/site/documentation/en-US/CloudForms/3.1-Beta/pdf
@@ -32,6 +29,12 @@ if [ $version == 'beta' ]; then
     wget -O "$output/User_Guide.pdf" $route/Management_Engine_5.3_Beta_User_Guide/CloudForms-3.1-Beta-Management_Engine_5.3_Beta_User_Guide-en-US.pdf
     cd $output
     tar -cvzf beta_docs.tar.gz *.pdf
+    echo -n "Upload to file.bne? (y/n): "
+    read answer
+    echo
+    if [ $answer == 'y' ]; then
+        cd .. && scp -r beta_docs/ bmoss@file.bne.redhat.com:public_html/
+    fi
 fi
 
 if [ $version == '3.1' ]; then
@@ -60,13 +63,22 @@ if [ $version == '3.1' ]; then
     wget -O "$output/User_Guide.pdf" $route/Management_Engine_5.3_User_Guide/CloudForms-3.1-Management_Engine_5.3_User_Guide-en-US.pdf
     cd $output
     tar -cvzf 3.1_docs.tar.gz *.pdf
-    cp Control_Guide.pdf cfme_control.pdf
-    cp Insight_Guide.pdf cfme_insight.pdf
-    cp Integration_Services_Guide.pdf cfme_integrate.pdf
-    cp Lifecycle_and_Automation_Guide.pdf cfme_automate.pdf
-    cp Quick_Start_Guide.pdf cfme_quickstart.pdf
-    cp Settings_and_Operations_Guide.pdf cfme_settingandops.pdf
+
+    appliance=cfme_docs
+    if test ! -d $appliance; then mkdir $appliance && cd $appliance; fi
+    cp ../Control_Guide.pdf cfme_control.pdf
+    cp ../Insight_Guide.pdf cfme_insight.pdf
+    cp ../Integration_Services_Guide.pdf cfme_integrate.pdf
+    cp ../Lifecycle_and_Automation_Guide.pdf cfme_automate.pdf
+    cp ../Quick_Start_Guide.pdf cfme_quickstart.pdf
+    cp ../Settings_and_Operations_Guide.pdf cfme_settingandops.pdf
     tar -cvzf cfme_docs.tar.gz cfme_*.pdf
+    echo -n "Upload cfme_docs to file.bne? (y/n): "
+    read answer
+    echo
+    if [ $answer == 'y' ]; then
+        scp -r ../cfme_docs/ bmoss@file.bne.redhat.com:public_html/
+    fi
 fi
 
 cd $loc
