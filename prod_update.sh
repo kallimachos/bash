@@ -1,50 +1,30 @@
-!/bin/bash
+#!/bin/bash
 
 loc=$(pwd)
 
-echo "Updating 3.0..."
-for dir in ~/csp/cloudforms/3.0/*; do
-    cd "$dir" && csprocessor pull
-    sed -i '0,/Product = CloudForms/s/Product = CloudForms/Product = Red Hat CloudForms/' *.contentspec
-    #sed -i 's/Product = Red Hat CloudForms/Product = CloudForms/g' *.contentspec
-    #head -n 20 *.contentspec
-    csprocessor push
-done
+declare -A versions=( ["1"]="3.0" ["2"]="beta" ["3"]="3.1")
 
-echo "Updating 3.1 beta..."
-for dir in ~/csp/cloudforms/beta/*; do
-    cd "$dir" && csprocessor pull
-    sed -i '0,/Product = CloudForms/s/Product = CloudForms/Product = Red Hat CloudForms/' *.contentspec
-    #sed -i 's/Product = Red Hat CloudForms/Product = CloudForms/g' *.contentspec
-    #head -n 20 *.contentspec
-    csprocessor push
-done
+for item in "${!versions[@]}"; do
+    directory=${versions["$item"]}
+    #echo "Updating $directory..."
+    #for dir in ~/csp/cloudforms/$directory/*; do
+    #    cd "$dir" && csprocessor pull
+    #    sed -i '0,/Product = CloudForms/s/Product = CloudForms/Product = Red Hat CloudForms/' *.contentspec
+    #    #sed -i 's/Product = Red Hat CloudForms/Product = CloudForms/g' *.contentspec
+    #    #head -n 20 *.contentspec
+    #    csprocessor push
+    #done
 
-echo "Updating 3.1..."
-for dir in ~/csp/cloudforms/3.1/*; do
-    cd "$dir" && csprocessor pull
-    sed -i '0,/Product = CloudForms/s/Product = CloudForms/Product = Red Hat CloudForms/' *.contentspec
-    #sed -i 's/Product = Red Hat CloudForms/Product = CloudForms/g' *.contentspec
-    #head -n 20 *.contentspec
-    csprocessor push
-done
+    #echo "Checking $directory..."
+    #for dir in ~/csp/cloudforms/3.0/*; do
+    #    cd "$dir"
+    #    grep -H "BZProduct = Red Hat CloudForms" *.contentspec
+    #done
 
-echo "Checking 3.0..."
-for dir in ~/csp/cloudforms/3.0/*; do
-    cd "$dir"
-    grep -H "BZProduct = Red Hat CloudForms" *.contentspec
-done
-
-echo "Checking 3.1 beta..."
-for dir in ~/csp/cloudforms/beta/*; do
-    cd "$dir"
-    grep -H "BZProduct = Red Hat CloudForms" *.contentspec
-done
-
-echo "Checking 3.1..."
-for dir in ~/csp/cloudforms/3.1/*; do
-    cd "$dir"
-    grep -H "BZProduct = Red Hat CloudForms" *.contentspec
+    echo "Assembling $directory..."
+    for dir in ~/csp/cloudforms/$directory/*; do
+        cd "$dir" && csprocessor assemble
+    done
 done
 
 cd $loc
