@@ -5,5 +5,12 @@ echo
 for item in "${!queries[@]}"; do echo "$item - ${queries["$item"]}"; done
 echo
 echo -n "Select search: "
-read search && echo
-bugzilla query --savedsearch="${queries[$search]}" | tee /dev/tty | wc -l && echo
+read search
+echo -n "Include descriptions? (y/n): "
+read descriptions && echo
+
+if [ $descriptions == 'y' ]; then
+    bugzilla query --savedsearch="${queries[$search]}" | tee /dev/tty | wc -l && echo
+else
+    bugzilla query --savedsearch="${queries[$search]}" -i | tee /dev/tty | wc -l && echo
+fi

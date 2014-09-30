@@ -23,7 +23,7 @@ if [ "$packages" == "y" ]; then
 		cd "$dir"/assembly/publican
 		packagelist
 	done
-    echo
+else echo "Skipping packages" && echo
 fi
 
 echo -n "Preview (a)ll, (r)el and tech notes, (e)verthing except rel and tech notes, (s)kip: "
@@ -34,7 +34,7 @@ if [ "$books" == "a" ]; then
 elif [ "$books" == "r" ]; then
 	cd $rel && csprocessor preview --hide-output
 	cd $tech && csprocessor preview --hide-output
-elif [ "$books" == "s" ]; then echo "Skipping preview"
+elif [ "$books" == "s" ]; then echo "Skipping preview" && echo
 else
 	for dir in $loc/*; do
 		if [ "$dir" != $rel -a "$dir" != $tech ] ; then
@@ -43,30 +43,23 @@ else
 	done
 fi
 
-echo -n "Assemble and brew (y/n): "
-read confirm
+echo -n "Brew (a)ll, (r)el and tech notes, (e)verthing except rel and tech notes, (c)ancel: "
+read books
 
-if [ "$confirm" == "y" ]; then
-	if [ "$books" == "s" ]; then
-		echo -n "Brew (a)ll, (r)el and tech notes, (e)verthing except rel and tech notes, (c)ancel: "
-		read books
-	fi
-	if [ "$books" == "a" ]; then
-		for dir in $loc/*; do (cd "$dir" && csprocessor publish); done
-	elif [ "$books" == "r" ]; then
-		cd $rel && csprocessor publish
-		cd $tech && csprocessor publish
-	elif [ "$books" == "e" ]; then
-		for dir in $loc/*; do
-			if [ "$dir" != $rel -a "$dir" != $tech ] ; then
-				cd "$dir" && csprocessor publish
-			fi
-		done
-    else
-        echo -e "Exiting on user command.\n"
-        exit 1
-	fi
-else
-	echo -e "Exiting on user command.\n"
-	exit 1
+# add logic to stop watching brew tasks after getting "Watching tasks (this may be safely interrupted)..." message.
+
+if [ "$books" == "a" ]; then
+	for dir in $loc/*; do (cd "$dir" && csprocessor publish); done
+elif [ "$books" == "r" ]; then
+	cd $rel && csprocessor publish
+	cd $tech && csprocessor publish
+elif [ "$books" == "e" ]; then
+	for dir in $loc/*; do
+		if [ "$dir" != $rel -a "$dir" != $tech ] ; then
+			cd "$dir" && csprocessor publish
+		fi
+	done
+   else
+       echo -e "Exiting on user command.\n"
+       exit 1
 fi
