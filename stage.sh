@@ -13,6 +13,19 @@ function packagelist {
 	echo $package && echo $package >> $loc/packages.txt
 }
 
+#function runtab {
+#    tab="--tab-with-profile=Default"
+#    cmd="bash -c 'ls';bash"
+#    foo=""
+#
+#    for i in 1 2 3 4 5; do
+#        foo+=($tab -e "$cmd")
+#    done
+#
+#    gnome-terminal "${foo[@]}"
+#    exit 0
+#}
+
 echo -n "View packages (y/n): "
 read packages
 test -e $loc/packages.txt && rm $loc/packages.txt
