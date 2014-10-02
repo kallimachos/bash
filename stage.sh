@@ -14,16 +14,18 @@ function packagelist {
 }
 
 #function runtab {
+#
+# I got this working, but running that many operations at once slowed things to a crawl.
+#
 #    tab="--tab-with-profile=Default"
-#    cmd="bash -c 'ls';bash"
+#    cmd="bash -c '$1';bash"
 #    foo=""
 #
-#    for i in 1 2 3 4 5; do
+#    for dir in $loc/*; do
 #        foo+=($tab -e "$cmd")
 #    done
 #
 #    gnome-terminal "${foo[@]}"
-#    exit 0
 #}
 
 echo -n "View packages (y/n): "
@@ -44,6 +46,8 @@ read books
 
 if [ "$books" == "a" ]; then
 	for dir in $loc/*; do (cd "$dir" && csprocessor preview --hide-output); done
+
+
 elif [ "$books" == "r" ]; then
 	cd $rel && csprocessor preview --hide-output
 	cd $tech && csprocessor preview --hide-output
