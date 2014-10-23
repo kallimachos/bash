@@ -25,6 +25,7 @@ if [ $version == '3.1' ]; then
     firefox $route/22849/
     firefox $route/22850/
     firefox $route/22851/
+    firefox $route/22955/
 fi
 
 if [ $version == '3.0' ]; then
