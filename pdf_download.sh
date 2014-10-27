@@ -6,79 +6,59 @@ echo -n "Enter CloudForms version: "
 read version
 echo
 
+#Set the CFME version to the CloudForms version + 2.2
+cfme=$(echo $version+2.2 | bc)
+
+#Set the directory to save pdfs to
 output=~/Desktop/$version
 output+=_docs
 
+#If the output directory does not exist, create it
 if test ! -d $output; then mkdir $output; fi
 cd $output
 
-if [ $version == 'beta' ]; then
-    route=http://documentation-devel.engineering.redhat.com/site/documentation/en-US/CloudForms/3.1-Beta/pdf
+#Set the root URL to fetch pdfs from and create an array of book titles
+route=http://documentation-devel.engineering.redhat.com/site/documentation/en-US/CloudForms/$version/pdf
+books=(
+    Management_Engine_${cfme}_Release_Notes
+    Installing_CloudForms_on_Red_Hat_Enterprise_Virtualization
+    Installing_CloudForms_on_Red_Hat_OpenStack_Platform
+    Installing_CloudForms_on_VMware_vSphere
+    Management_Engine_${cfme}_Control_Guide
+    Management_Engine_${cfme}_Insight_Guide
+    Management_Engine_${cfme}_Integration_Services_Guide
+    Management_Engine_${cfme}_Lifecycle_and_Automation_Guide
+    Management_Engine_${cfme}_Methods_Available_for_Automation
+    Management_Engine_${cfme}_NetApp_Storage_Integration_Guide
+    Management_Engine_${cfme}_OpenShift_Enterprise_Deployment_Guide
+    Management_Engine_${cfme}_Quick_Start_Guide
+    Management_Engine_${cfme}_Settings_and_Operations_Guide
+    Management_Engine_${cfme}_Technical_Notes
+    Management_Engine_${cfme}_User_Guide
+    )
 
-    wget -O "$output/CloudForms-3.1-Beta_Release_Notes.pdf" $route/Management_Engine_5.3_Beta_Release_Notes/CloudForms-3.1-Beta-Management_Engine_5.3_Beta_Release_Notes-en-US.pdf
-    wget -O "$output/Installing_CloudForms_3.1_Beta_on_Red_Hat_Enterprise_Virtualization.pdf" $route/Installing_CloudForms_3.1_Beta_on_Red_Hat_Enterprise_Virtualization/CloudForms-3.1-Beta-Installing_CloudForms_3.1_Beta_on_Red_Hat_Enterprise_Virtualization-en-US.pdf
-    wget -O "$output/Installing_CloudForms_3.1_Beta_on_Red_Hat_OpenStack_Platform.pdf" $route/Installing_CloudForms_3.1_Beta_on_Red_Hat_OpenStack_Platform/CloudForms-3.1-Beta-Installing_CloudForms_3.1_Beta_on_Red_Hat_OpenStack_Platform-en-US.pdf
-    wget -O "$output/Installing_CloudForms_3.1_Beta_on_VMware_vSphere.pdf" $route/Installing_CloudForms_3.1_Beta_on_VMware_vSphere/CloudForms-3.1-Beta-Installing_CloudForms_3.1_Beta_on_VMware_vSphere-en-US.pdf
-    wget -O "$output/Control_Guide.pdf" $route/Management_Engine_5.3_Beta_Control_Guide/CloudForms-3.1-Beta-Management_Engine_5.3_Beta_Control_Guide-en-US.pdf
-    wget -O "$output/Insight_Guide.pdf" $route/Management_Engine_5.3_Beta_Insight_Guide/CloudForms-3.1-Beta-Management_Engine_5.3_Beta_Insight_Guide-en-US.pdf
-    wget -O "$output/Integration_Services_Guide.pdf" $route/Management_Engine_5.3_Beta_Integration_Services_Guide/CloudForms-3.1-Beta-Management_Engine_5.3_Beta_Integration_Services_Guide-en-US.pdf
-    wget -O "$output/Lifecycle_and_Automation_Guide.pdf" $route/Management_Engine_5.3_Beta_Lifecycle_and_Automation_Guide/CloudForms-3.1-Beta-Management_Engine_5.3_Beta_Lifecycle_and_Automation_Guide-en-US.pdf
-    wget -O "$output/Methods_Available_for_Automation.pdf" $route/Management_Engine_5.3_Beta_Methods_Available_for_Automation/CloudForms-3.1-Beta-Management_Engine_5.3_Beta_Methods_Available_for_Automation-en-US.pdf
-    wget -O "$output/Quick_Start_Guide.pdf" $route/Management_Engine_5.3_Beta_Quick_Start_Guide/CloudForms-3.1-Beta-Management_Engine_5.3_Beta_Quick_Start_Guide-en-US.pdf
-    wget -O "$output/Settings_and_Operations_Guide.pdf" $route/Management_Engine_5.3_Beta_Settings_and_Operations_Guide/CloudForms-3.1-Beta-Management_Engine_5.3_Beta_Settings_and_Operations_Guide-en-US.pdf
-    wget -O "$output/User_Guide.pdf" $route/Management_Engine_5.3_Beta_User_Guide/CloudForms-3.1-Beta-Management_Engine_5.3_Beta_User_Guide-en-US.pdf
-    cd $output
-    tar -cvzf beta_docs.tar.gz *.pdf
-    echo -n "Upload to file.bne? (y/n): "
-    read answer
-    echo
-    if [ $answer == 'y' ]; then
-        cd .. && scp -r beta_docs/ bmoss@file.bne.redhat.com:public_html/
-    fi
-fi
+#Fetch the pdfs and save them to the output directory
+for title in "${books[@]}"; do
+    wget -O "$output/$title.pdf" $route/$title/CloudForms-$version-$title-en-US.pdf
+    done
 
-if [ $version == '3.1' ]; then
-    route=http://documentation-devel.engineering.redhat.com/site/documentation/en-US/CloudForms/3.1/pdf
+#Create a gzip tarball of the pdfs
+cd $output
+tar -cvzf $version_docs.tar.gz *.pdf
 
-    echo -n "Include Rel and Tech Notes? (y/n): "
-    read notes
-    echo
+#If it does not exist, create a directory for the docs that need to be uploaded to the appliance
+appliance=cfme_docs
+if test ! -d $appliance; then mkdir $appliance && cd $appliance; fi
 
-    if [ $notes == 'y' ]; then
-        wget -O "$output/CloudForms-3.1-Release_Notes.pdf" $route/Management_Engine_5.3_Release_Notes/CloudForms-3.1-Management_Engine_5.3_Release_Notes-en-US.pdf
-        wget -O "$output/CloudForms-3.1-Technical_Notes.pdf" $route/Management_Engine_5.3_Technical_Notes/CloudForms-3.1-Management_Engine_5.3_Technical_Notes-en-US.pdf
-    fi
+#Copy the docs with the required filenames for use on the appliance
+cp ../Management_Engine_${cfme}_Control_Guide.pdf cfme_control.pdf
+cp ../Management_Engine_${cfme}_Insight_Guide.pdf cfme_insight.pdf
+cp ../Management_Engine_${cfme}_Integration_Services_Guide.pdf cfme_integrate.pdf
+cp ../Management_Engine_${cfme}_Lifecycle_and_Automation_Guide.pdf cfme_automate.pdf
+cp ../Management_Engine_${cfme}_Quick_Start_Guide.pdf cfme_quickstart.pdf
+cp ../Management_Engine_${cfme}_Settings_and_Operations_Guide.pdf cfme_settingandops.pdf
 
-    wget -O "$output/Installing_CloudForms_on_Red_Hat_Enterprise_Virtualization.pdf" $route/Installing_CloudForms_on_Red_Hat_Enterprise_Virtualization/CloudForms-3.1-Installing_CloudForms_on_Red_Hat_Enterprise_Virtualization-en-US.pdf
-    wget -O "$output/Installing_CloudForms_on_Red_Hat_OpenStack_Platform.pdf" $route/Installing_CloudForms_on_Red_Hat_OpenStack_Platform/CloudForms-3.1-Installing_CloudForms_on_Red_Hat_OpenStack_Platform-en-US.pdf
-    wget -O "$output/Installing_CloudForms_on_VMware_vSphere.pdf" $route/Installing_CloudForms_on_VMware_vSphere/CloudForms-3.1-Installing_CloudForms_on_VMware_vSphere-en-US.pdf
-    wget -O "$output/Control_Guide.pdf" $route/Management_Engine_5.3_Control_Guide/CloudForms-3.1-Management_Engine_5.3_Control_Guide-en-US.pdf
-    wget -O "$output/Insight_Guide.pdf" $route/Management_Engine_5.3_Insight_Guide/CloudForms-3.1-Management_Engine_5.3_Insight_Guide-en-US.pdf
-    wget -O "$output/Integration_Services_Guide.pdf" $route/Management_Engine_5.3_Integration_Services_Guide/CloudForms-3.1-Management_Engine_5.3_Integration_Services_Guide-en-US.pdf
-    wget -O "$output/Lifecycle_and_Automation_Guide.pdf" $route/Management_Engine_5.3_Lifecycle_and_Automation_Guide/CloudForms-3.1-Management_Engine_5.3_Lifecycle_and_Automation_Guide-en-US.pdf
-    wget -O "$output/Methods_Available_for_Automation.pdf" $route/Management_Engine_5.3_Methods_Available_for_Automation/CloudForms-3.1-Management_Engine_5.3_Methods_Available_for_Automation-en-US.pdf
-    wget -O "$output/NetApp_Integration_Guide.pdf" $route/Management_Engine_5.3_NetApp_Storage_Integration_Guide/CloudForms-3.1-Management_Engine_5.3_NetApp_Storage_Integration_Guide-en-US.pdf
-    wget -O "$output/Quick_Start_Guide.pdf" $route/Management_Engine_5.3_Quick_Start_Guide/CloudForms-3.1-Management_Engine_5.3_Quick_Start_Guide-en-US.pdf
-    wget -O "$output/Settings_and_Operations_Guide.pdf" $route/Management_Engine_5.3_Settings_and_Operations_Guide/CloudForms-3.1-Management_Engine_5.3_Settings_and_Operations_Guide-en-US.pdf
-    wget -O "$output/User_Guide.pdf" $route/Management_Engine_5.3_User_Guide/CloudForms-3.1-Management_Engine_5.3_User_Guide-en-US.pdf
-    cd $output
-    tar -cvzf 3.1_docs.tar.gz *.pdf
-
-    appliance=cfme_docs
-    if test ! -d $appliance; then mkdir $appliance && cd $appliance; fi
-    cp ../Control_Guide.pdf cfme_control.pdf
-    cp ../Insight_Guide.pdf cfme_insight.pdf
-    cp ../Integration_Services_Guide.pdf cfme_integrate.pdf
-    cp ../Lifecycle_and_Automation_Guide.pdf cfme_automate.pdf
-    cp ../Quick_Start_Guide.pdf cfme_quickstart.pdf
-    cp ../Settings_and_Operations_Guide.pdf cfme_settingandops.pdf
-    tar -cvzf cfme_docs.tar.gz cfme_*.pdf
-    echo -n "Upload cfme_docs to file.bne? (y/n): "
-    read answer
-    echo
-    if [ $answer == 'y' ]; then
-        scp -r ../cfme_docs/ bmoss@file.bne.redhat.com:public_html/
-    fi
-fi
+#Create a gzip tarball of the appliance docs
+tar -cvzf cfme_docs.tar.gz cfme_*.pdf
 
 cd $loc
