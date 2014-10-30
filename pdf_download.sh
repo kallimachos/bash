@@ -25,6 +25,7 @@ books=(
     Installing_CloudForms_on_Red_Hat_OpenStack_Platform
     Installing_CloudForms_on_VMware_vSphere
     Management_Engine_${cfme}_Control_Guide
+    Management_Engine_${cfme}_Deployment_Planning_Guide
     Management_Engine_${cfme}_Insight_Guide
     Management_Engine_${cfme}_Integration_Services_Guide
     Management_Engine_${cfme}_Lifecycle_and_Automation_Guide
