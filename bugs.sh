@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -A queries=( ["1"]="Brian" ["2"]="Dan" ["3"]="Suyog" ["4"]="Shikha" ["5"]="NEW" ["6"]="Need_Info" ["7"]="ON_QA" ["8"]="Docs 5.3.z" ["9"]="RHCI")
+declare -A queries=( ["1"]="Brian" ["2"]="Dan" ["3"]="Suyog" ["4"]="Shikha" ["5"]="Marianne" ["6"]="CloudFormsDocs" ["7"]="NEW" ["8"]="ON_QA" ["9"]="Errata")
 echo
 for item in "${!queries[@]}"; do echo "$item - ${queries["$item"]}"; done
 echo
