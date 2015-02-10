@@ -3,9 +3,13 @@
 bash ~/scripts/bash/testdate.sh
 
 sudo yum update -y --skip-broken
-
 echo
 
+echo 'OpenStack Repositories:'
+bash ~/scripts/bash/stack.sh
+echo
+
+echo 'My GitHub Repositories:'
 bash ~/scripts/bash/mygit.sh
 
 #for dir in ~/CloudForms/*; do

@@ -15,7 +15,7 @@ function packagelist {
 
 #function runtab {
 #
-# I got this working, but running that many operations at once slowed things to a crawl.
+# This works, but running that many operations at once slowed things to a crawl.
 #
 #    tab="--tab-with-profile=Default"
 #    cmd="bash -c '$1';bash"

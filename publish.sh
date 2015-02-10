@@ -69,7 +69,7 @@ else
 		echo -e "Publish cancelled on user command.\n"
 		exit 1
 	else
-		echo "Tagging packages live..."
+		echo "Tagging packages into docs-rhel-6..."
 		while read line; do
 			brew tag-build docs-rhel-6 "$line"
 		done < $loc/packages.txt
