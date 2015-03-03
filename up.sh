@@ -9,6 +9,10 @@ echo 'OpenStack Repositories:'
 bash ~/scripts/bash/stack.sh
 echo
 
+echo 'RHCI Repositories:'
+bash ~/scripts/bash/rhci.sh
+echo
+
 echo 'My GitHub Repositories:'
 bash ~/scripts/bash/mygit.sh
 
