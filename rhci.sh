@@ -5,3 +5,4 @@ for dir in ~/rhci/*; do
         cd $dir && git pull
 	fi
 done
+
