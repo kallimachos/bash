@@ -20,3 +20,17 @@ for dir in ~/scripts/*; do
 		git status -s
 	fi
 done
+
+for dir in ~/rhci/*; do
+    if test -d $dir && test -e $dir/.git; then
+        cd $dir && echo $dir
+        git status -s
+    fi
+done
+
+for dir in ~/repos/OpenStack/*; do
+    if test -d $dir && test -e $dir/.git; then
+        cd $dir && echo $dir
+        git status -s
+    fi
+done
