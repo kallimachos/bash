@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo
 for dir in ~/code/*; do
     if test -d $dir && test -e $dir/.git; then
         cd $dir && echo $dir
@@ -21,16 +22,10 @@ for dir in ~/scripts/*; do
 	fi
 done
 
-for dir in ~/rhci/*; do
+for dir in ~/openstack/*; do
     if test -d $dir && test -e $dir/.git; then
         cd $dir && echo $dir
         git status -s
     fi
 done
-
-for dir in ~/repos/OpenStack/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && echo $dir
-        git status -s
-    fi
-done
+echo
