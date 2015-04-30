@@ -7,7 +7,7 @@ for dir in ~/openstack/*; do
         git status -s
     fi
 done
-for dir in ~/rackspace/*; do
+for dir in ~/rpcdocs/*; do
     if test -d $dir && test -e $dir/.git; then
         cd $dir && echo $dir
         git status -s
