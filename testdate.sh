@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file="/Users/bmoss/scripts/bash/date.txt"
+file="~/scripts/bash/date.txt"
 day=$(cat "$file")
 today=$(date +%j)
 if [ "$day" != "$today" ]; then

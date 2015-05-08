@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file="/Users/bmoss/Rackspace/tldr.txt"
+file="~/Rackspace/tldr.txt"
 if [ "$1" = "" ]; then
 	open -a "Komodo Edit 9" $file
 elif [ "$1" = "wc" ]; then
