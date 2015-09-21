@@ -3,9 +3,17 @@
 # Runs the appropriate OS $script on the destination $IP machine
 
 IP=$2
+ERROR="Usage: devstack [OS] <IP Address>"
+HELP="$ERROR\n
+Install devstack on the server at <IP Address> running the specified [OS].\n\n
+IP Address\tIP address of target server\n
+-f|--fed\tFedora operating system\n
+-r|--rhel\tRHEL operating system\n
+-u|--ubu\tUbuntu operating system\n
+-h|--help\tDisplay help and exit\n"
 
 # read the options
-TEMP=`getopt -o fru --long fed,rhel,ub -n 'devstack.sh' -- "$@"`
+TEMP=`getopt -o fruh --long fed,rhel,ub,help -n 'devstack.sh' -- "$@"`
 eval set -- "$TEMP"
 
 # Set script based on provided option
@@ -14,7 +22,8 @@ while true ; do
         -f|--fed) script=fedstart.sh ; break ;;
         -r|--rhel) script=rhelstart.sh ; break ;;
         -u|--ubu) script=ubstart.sh ; break ;;
-        *) echo "Error: Enter a destination operating system." ; exit 1 ;;
+        -h|--help) echo -e $HELP ; exit 0 ;;
+        *) echo -e "$ERROR\n" ; exit 1 ;;
     esac
 done
 
@@ -29,5 +38,5 @@ if [ "$IP" != "" ]; then
     script=~/scripts/bash/devstack/$script
     ssh root@$IP 'bash' < $script
 else
-    echo "Error: Enter a destination IP address." ; exit 1
+    echo -e "$ERROR\n" ; exit 1
 fi

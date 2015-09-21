@@ -5,6 +5,8 @@
 # place this script in /root on the devstack host
 # make this script executable with 'chmod 755 devstack.sh'
 # run with './devstack.sh'
+#
+# For RHEL 7
 #------------------------------------------------------------------------------
 
 # update OS and install git
