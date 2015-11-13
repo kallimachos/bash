@@ -29,11 +29,10 @@ done
 
 if [ "$IP" != "" ]; then
     echo "Running $script on $IP"
-    for i in `seq 1 20`;
-        do
-            echo -n "."
-            sleep 0.1
-        done
+    for i in `seq 1 20`; do
+        echo -n "."
+        sleep 0.1
+    done
     echo "." ; sleep 0.1
     script=~/scripts/bash/devstack/$script
     ssh root@$IP 'bash' < $script
