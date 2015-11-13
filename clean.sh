@@ -5,7 +5,7 @@ echo -n "Proceed with git clean? (y/n): "
 read proceed
 if [ "$proceed" != "y" ]; then
 	exit
-else    
+else
     echo "Cleaning git repos..."
 fi
 
