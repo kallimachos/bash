@@ -13,7 +13,7 @@ for file in $loc; do
         xmlfile="${file##*/}"
         rstfile="${rstfile##*/}"
         echo "$xmlfile --> $rstfile"
-        # rm $file
+        rm $file
     fi
 done
 
