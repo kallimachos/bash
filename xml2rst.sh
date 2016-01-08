@@ -13,6 +13,16 @@ for file in $loc; do
         xmlfile="${file##*/}"
         rstfile="${rstfile##*/}"
         echo "$xmlfile --> $rstfile"
-        rm $file
+        # rm $file
     fi
 done
+
+echo "Cleaning up RST..."
+sed -i 's/programlisting/\ /g' *.rst                       # Delete programlisting tag
+sed -i 's/screen/\ /g' *.rst                               # Delete screen tag
+sed -i 's/literal/\ /g' *.rst                              # Delete litral tag
+sed -i 's/\*\*Note\*\*/\.\.\ note\:\: /g' *.rst            # Fix note directive
+sed -i 's/\*\*Tip\*\*/\.\.\ tip\:\: /g' *.rst              # Fix tip directive
+sed -i 's/\*\*Warning\*\*/\.\.\ warning\:\: /g' *.rst      # Fix Warning directive
+sed -i 's/\*\*Important\*\*/\.\.\ important\:\: /g' *.rst  # Fix Important directive
+echo "Done"
