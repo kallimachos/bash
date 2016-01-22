@@ -6,7 +6,7 @@ bash ~/scripts/bash/stack.sh
 echo
 
 echo 'Rackspace Repositories:'
-bash ~/scripts/bash/rack.sh
+bash ~/scripts/bash/rackup.sh
 echo
 
 echo 'My GitHub Repositories:'
