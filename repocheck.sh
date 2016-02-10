@@ -1,35 +1,21 @@
 #!/bin/bash
 
-echo
-for dir in ~/openstack/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && echo $dir
-        git status -s
-    fi
-done
-for dir in ~/rpcdocs/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && echo $dir
-        git status -s
-    fi
-done
-for dir in ~/code/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && echo $dir
-        git status -s
-    fi
-done
+# Print git status of repos in the listed directories if they have uncommitted
+# changes or if they are not on the master branch.
 
-for dir in ~/code/python/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && echo $dir
-        git status -s
-    fi
-done
-for dir in ~/scripts/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && echo $dir
-        git status -s
-    fi
+repos=(openstack rpcdocs code code/python scripts)
+
+echo
+for item in ${repos[@]}; do
+    root=~/$item/*
+    for dir in $root; do
+        if test -d $dir && test -e $dir/.git; then
+            cd $dir && echo $dir
+            branch=$(git status -s -b)
+            if ! [ "$branch" = "## master...origin/master" ]; then
+                git status -s -b
+            fi
+        fi
+    done
 done
 echo
