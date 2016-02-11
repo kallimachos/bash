@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Print git status of repos in the listed directories if they have uncommitted
-# changes or if they are not on the master branch.
+# Print 'git status -s -b' of repos in the listed directories if they have
+# uncommitted changes or if they are not on the master branch.
 
 repos=(openstack rpcdocs code code/python scripts)
 
