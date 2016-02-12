@@ -1,19 +1,17 @@
 #!/bin/bash
 
-for dir in ~/code/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && git pull
-    fi
-done
+# Run 'git pull' on all my personal git repositories.
 
-for dir in ~/code/python/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && git pull
-    fi
-done
+repos=(code code/python scripts)
 
-for dir in ~/scripts/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && git pull
-    fi
+echo
+for item in ${repos[@]}; do
+    root=~/$item/*
+    for dir in $root; do
+        if test -d $dir && test -e $dir/.git; then
+            cd $dir && git pull
+        fi
+
+    done
 done
+echo
