@@ -8,28 +8,29 @@ dir=$(pwd)
 dir_name=`basename $(pwd)`
 
 if [ "$repo_name" = "" ]; then
-  echo -n "Repo name (hit enter to use '$dir_name')? "
-  read repo_name
+    echo -n "Repo name (hit enter to use '$dir_name')? "
+    read repo_name
 fi
 
 if [ "$repo_name" = "" ]; then
-  repo_name=$dir_name
+    repo_name=$dir_name
 fi
 
 username=`git config github.username`
 if [ "$username" = "" ]; then
-  echo "Could not find username, run 'git config --global github.username <username>'"
-  invalid_credentials=1
+    echo "Could not find username."
+    echo "Run 'git config --global github.username <username>'"
+    invalid_credentials=1
 fi
 
 token=`git config github.token`
 if [ "$token" = "" ]; then
-  echo "Could not find token, run 'git config --global github.token <token>'"
-  invalid_credentials=1
+    echo "Could not find token, run 'git config --global github.token <token>'"
+    invalid_credentials=1
 fi
 
 if [ "$invalid_credentials" == "1" ]; then
-  return 1
+    return 1
 fi
 
 echo -n "Use python project template? (y/n) "
@@ -52,7 +53,8 @@ git commit -q -m "Initial commit"
 echo " done."
 
 echo -n "Creating Github repository '$repo_name' ..."
-curl -u "$username:$token" https://api.github.com/user/repos -d '{"name":"'$repo_name'"}' > /dev/null 2>&1
+curl -u "$username:$token" https://api.github.com/user/repos -d \
+'{"name":"'$repo_name'"}' > /dev/null 2>&1
 echo " done."
 
 echo -n "Pushing local code to remote ..."
