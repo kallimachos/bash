@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Previews and brews Docbook XML books using publican and csprocessor
+
 echo -n "Enter CloudForms version: "
 read version
 

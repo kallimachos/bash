@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Assembles and publishes Docbook XML using publican and csprocessor.
+
 echo -n "Enter CloudForms version: "
 read version
 

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Merges local master branches for Rackspace repositories with upstream
+# and pushes the results to origin.
+
 for dir in ~/rpcdocs/*; do
     if test -d $dir && test -e $dir/.git; then
         if [ "$1" == "y" ]; then

@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Lists package names for CloudForms Management Engine books.
+
 echo -n "Enter CloudForms version: "
 read version
 echo

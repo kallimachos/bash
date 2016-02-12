@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Opens tldr.txt if no argument; else appends string to tldr.
+
 file=~/Rackspace/tldr.txt
 if [ "$1" = "" ]; then
     open -a "Komodo Edit 9" $file

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# This script uses pandoc and sed commands to convert webhelp html output files
-# from the DocBook maven build to RST and copies them to a directory.
+# Uses pandoc and sed commands to convert webhelp html output files
+# from a DocBook maven build to RST and copies them to a directory.
 #
 # Download current html output from the Jenkins build server. For example, get
 # the Cloud Big Data output here: http://docs-staging.rackspace.com/jenkins/

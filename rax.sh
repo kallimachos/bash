@@ -1,5 +1,7 @@
 #bin/bash
 
+# Opens secure shells (SSH) to the listed IP addresses.
+
 controller="119.9.128.75"
 compute1="119.9.128.77"
 block1="119.9.128.78"

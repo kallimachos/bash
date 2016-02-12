@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Convenience alias for a designated bash or python script.
+
 touch $HOME/scripts/bash/test_status.txt
 doc="$HOME/scripts/bash/test_status.txt"
 

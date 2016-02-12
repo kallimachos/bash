@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Run 'git pull' on all my personal git repositories.
+# Runs 'git pull' on all my personal git repositories.
 
 repos=(code code/python scripts)
 

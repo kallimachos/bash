@@ -1,3 +1,7 @@
+#!/bin/bash
+
+# Initializes a new git repository for a python project.
+
 repo_name=$1
 
 dir=$(pwd)

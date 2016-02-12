@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Opens The_Room.txt if no argument; counts words if arg = wc; else appends
+# string to The_Room.txt.
+
 file=~/Dropbox/The_Room.txt
 backup=~/Documents/The_Room.txt
 if [ "$1" = "" ]; then

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Runs the listed 'git pull' scripts.
+
 echo
 echo 'OpenStack Repositories:'
 bash ~/scripts/bash/stack.sh

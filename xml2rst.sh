@@ -1,5 +1,5 @@
 #!/bin/bash
-# A simple bash script for converting Docbook XML files in a directory to RST
+# Converts Docbook XML files in a directory to RST using pandoc.
 #
 # Run this script in the directory containing the XML files to convert.
 # If you want to delete the XML files after conversion, remove the 'rm $file'

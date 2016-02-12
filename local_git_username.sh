@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Sets the username for my personal repos to kallimachos.
+
 for dir in ~/code/*; do
     if test -d $dir && test -e $dir/.git; then
         cd $dir

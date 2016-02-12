@@ -1,4 +1,6 @@
-#/bin/bash
+#!/bin/bash
+
+# Runs 'git clean -xfd' on listed repositories.
 
 bash ~/scripts/bash/repocheck.sh
 echo -n "Proceed with git clean? (y/n): "
@@ -8,40 +10,17 @@ if [ "$proceed" != "y" ]; then
 else
     echo "Cleaning git repos..."
 fi
-
-echo
-echo 'OpenStack Repositories:'
-for dir in ~/openstack/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && git clean -xfd
-    fi
-done
 echo
 
-echo 'Rackspace Repositories:'
-for dir in ~/rpcdocs/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && git clean -xfd
-    fi
-done
+repos=(openstack rpcdocs code code/python scripts)
+
 echo
-
-echo 'My GitHub Repositories:'
-for dir in ~/code/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && git clean -xfd
-    fi
-done
-
-for dir in ~/code/python/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && git clean -xfd
-    fi
-done
-
-for dir in ~/scripts/*; do
-    if test -d $dir && test -e $dir/.git; then
-        cd $dir && git clean -xfd
-    fi
+for item in ${repos[@]}; do
+    root=~/$item/*
+    for dir in $root; do
+        if test -d $dir && test -e $dir/.git; then
+            cd $dir && git clean -xfd
+        fi
+    done
 done
 echo

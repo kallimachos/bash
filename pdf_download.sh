@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Downloads all PDF books for CloudForms Management Engine.
+
 loc=$(pwd)
 
 echo -n "Enter CloudForms version: "

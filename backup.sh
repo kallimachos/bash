@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Runs rsync to back up system to external HD.
 # Add -X option if syncing to compatible filesystem (e.g. EXT4)
 
 if [ "$1" = "all" ]; then
