@@ -108,6 +108,10 @@ setup.py
 Opens The_Room.txt if no argument; counts words if arg = wc; else appends
 string to The_Room.txt.
 
+stable.sh
+~~~~~~~~~
+Merges local stable branches with upstream and pushes the results to origin.
+
 
 stack.sh
 ~~~~~~~~
@@ -142,11 +146,6 @@ Runs the listed 'git pull' scripts.
 ups.sh
 ~~~~~~
 Updates Fedora and pip packages.
-
-
-v10.sh
-~~~~~~
-Merges local v10 branch with upstream and pushes the result to origin
 
 
 xml2rst.sh
