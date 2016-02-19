@@ -14,7 +14,6 @@ echo
 
 repos=(openstack rpcdocs code code/python scripts)
 
-echo
 for item in ${repos[@]}; do
     root=~/$item/*
     for dir in $root; do
