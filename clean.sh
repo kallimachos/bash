@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Runs 'git clean -xfd' on listed repositories.
+# Runs 'git clean -xfd' and 'git remote prune origin' on listed repositories.
 
 bash ~/scripts/bash/repocheck.sh
 echo -n "Proceed with git clean? (y/n): "
@@ -19,7 +19,7 @@ for item in ${repos[@]}; do
     root=~/$item/*
     for dir in $root; do
         if test -d $dir && test -e $dir/.git; then
-            cd $dir && git clean -xfd
+            cd $dir && git clean -xfd && git remote prune origin
         fi
     done
 done

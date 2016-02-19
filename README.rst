@@ -15,7 +15,7 @@ Runs rsync to back up system to external HD.
 
 clean.sh
 ~~~~~~~~
-Runs 'git clean -xfd' on listed repositories.
+Runs 'git clean -xfd' and 'git remote prune origin' on listed repositories.
 
 
 cleanscreen.sh
