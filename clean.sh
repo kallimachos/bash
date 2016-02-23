@@ -18,7 +18,11 @@ for item in ${repos[@]}; do
     root=~/$item/*
     for dir in $root; do
         if test -d $dir && test -e $dir/.git; then
-            cd $dir && git clean -xfd && git remote prune origin
+            if [ $dir == ~/rpcdocs/docs-internal ]; then
+                true
+            else
+                cd $dir && git clean -xfd && git remote prune origin
+            fi
         fi
     done
 done
