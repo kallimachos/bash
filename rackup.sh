@@ -12,7 +12,7 @@ for dir in ~/rpcdocs/*; do
             git push origin master
         else
             cd $dir
-            if [ $dir == ~/rpcdocs/docs-internal ]; then
+            if [ $dir == ~/rpcdocs/internal ]; then
                 true
             else
                 git fetch upstream
