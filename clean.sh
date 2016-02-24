@@ -21,7 +21,8 @@ for item in ${repos[@]}; do
             if [ $dir == ~/rpcdocs/docs-internal ]; then
                 true
             else
-                cd $dir && git clean -xfd && git remote prune origin
+                cd $dir && echo $dir
+                git clean -xfd && git remote prune origin
             fi
         fi
     done
