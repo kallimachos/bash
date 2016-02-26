@@ -18,7 +18,7 @@ for item in ${repos[@]}; do
     root=~/$item/*
     for dir in $root; do
         if test -d $dir && test -e $dir/.git; then
-            if [ $dir == ~/rpcdocs/docs-internal ]; then
+            if [ $dir == ~/rpcdocs/internal ]; then
                 true
             else
                 cd $dir && echo $dir
