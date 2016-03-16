@@ -55,6 +55,11 @@ mailip.sh
 Emails the IP address of the local machine to the given address.
 
 
+md2rst.sh
+~~~~~~~~~
+Converts Markdown files in a directory to RST using pandoc.
+
+
 mygit.sh
 ~~~~~~~~
 Runs 'git pull' on all my personal git repositories.
