@@ -9,7 +9,7 @@ if [ "$1" = "all" ]; then
     --exclude={"/media/","/lost+found/"} /* \
     /run/media/bmoss/FreeAgent\ GoFlex\ Drive/FedoraBackup/
 else
-    rsync -nazvACHS --delete \
+    rsync -azvACHS --delete \
     --progress --exclude={"/dev/","/proc/","/sys/","/tmp/","/run/","/mnt/"} \
     --exclude={"/media/","/lost+found/",".gem/",".ICEauthority/"} \
     --exclude={".macromedia/",".pki/",".shutter/",".gimp-2.8/",".java/"} \
