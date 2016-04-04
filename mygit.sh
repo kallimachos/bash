@@ -4,7 +4,6 @@
 
 repos=(code code/python scripts)
 
-echo
 for item in ${repos[@]}; do
     root=~/$item/*
     for dir in $root; do
@@ -14,4 +13,3 @@ for item in ${repos[@]}; do
 
     done
 done
-echo
