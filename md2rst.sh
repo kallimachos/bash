@@ -8,7 +8,7 @@
 loc=$(pwd)/*
 
 for file in $loc; do
-    if test -f $file; then
+    if [[ $file == *.md ]]; then
         rstfile="${file%.*}.rst"
         pandoc -f markdown -t rst $file -o $rstfile
         xmlfile="${file##*/}"
