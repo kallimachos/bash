@@ -13,6 +13,11 @@ backup.sh
 Runs rsync to back up system to external HD.
 
 
+branchlis.sh
+~~~~~~~~~~~~
+Lists local branches for all repositories.
+
+
 clean.sh
 ~~~~~~~~
 Runs 'git clean -xfd' and 'git remote prune origin' on listed repositories.
