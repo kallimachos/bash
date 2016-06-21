@@ -41,6 +41,7 @@ if [[ $OSTYPE =~ ^darwin ]]; then
     alias fox='open -a "firefox"'
     alias go='open'
     alias komodo='open -a "Komodo Edit 9"'
+    alias music='open -a "itunes"'
     alias show='open build/html/index.html'
     alias work='fox && komodo && open -a "mail" && xchat'
     alias xchat='open -a "xchat azure"'
@@ -80,3 +81,6 @@ alias linkcheck='p3 ~/scripts/python/linkcheck/linkcheck.py'
 alias numerate='p3 ~/scripts/python/numerate/numerate.py'
 alias table='p3 ~/scripts/python/table/table.py'
 alias zen='p3 ~/code/python/dailyzen/dailyzen.py'
+
+# added by travis gem
+[ -f /Users/bmoss/.travis/travis.sh ] && source /Users/bmoss/.travis/travis.sh
