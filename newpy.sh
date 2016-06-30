@@ -42,10 +42,10 @@ if [ "$template" = "y" ]; then
     cd $dir
 else
     echo "No template selected."
+    echo "$repo_name" > README.rst
 fi
 
 echo -n "Initialising local repository ..."
-echo "$repo_name" > README.rst
 git init > /dev/null 2>&1
 git config --local user.name kallimachos
 git add .
@@ -61,3 +61,4 @@ echo -n "Pushing local code to remote ..."
 git remote add origin git@github.com:$username/$repo_name.git > /dev/null 2>&1
 git push -u origin master > /dev/null 2>&1
 echo " done."
+echo "Please update README.rst and create a gh-page if required."
