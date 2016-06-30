@@ -45,7 +45,7 @@ else
 fi
 
 echo -n "Initialising local repository ..."
-echo "# $repo_name" > README.md
+echo "$repo_name" > README.rst
 git init > /dev/null 2>&1
 git config --local user.name kallimachos
 git add .
