@@ -13,10 +13,16 @@ backup.sh
 Runs rsync to back up system to external HD.
 
 
-branchlis.sh
-~~~~~~~~~~~~
+branchlist.sh
+~~~~~~~~~~~~~
 Lists local branches for all repositories.
 
+
+bump.sh
+~~~~~~~
+
+Merges local branch for a Rackspace repository with upstream and pushes
+the result to origin.
 
 clean.sh
 ~~~~~~~~
