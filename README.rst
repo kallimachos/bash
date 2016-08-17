@@ -154,6 +154,11 @@ tldr.sh
 Opens tldr.txt if no argument; else appends string to tldr.
 
 
+try.sh
+~~~~~~
+Automates sdist, bdist, and virtualenv creation for python package testing.
+
+
 up.sh
 ~~~~~
 Runs the listed 'git pull' scripts.
