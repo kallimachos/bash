@@ -2,7 +2,7 @@
 
 # Updates Fedora and pip packages.
 
-if [[ uname == 'linux-gnu' ]]; then
+if [[ uname == 'Linux' ]]; then
     echo 'sudo dnf update -y'
     sudo dnf update -y
     echo
