@@ -8,6 +8,6 @@ if [[ uname == 'linux-gnu' ]]; then
     echo
 fi
 
-echo 'sudo pip-review --auto'
-sudo pip-review --auto
+echo 'pip-review --auto'
+pip-review --auto
 echo
