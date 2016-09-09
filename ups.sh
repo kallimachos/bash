@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Updates Fedora and pip packages.
-
-if [[ uname == 'Linux' ]]; then
+if [[ `uname` == 'Linux' ]]; then
     echo 'sudo dnf update -y'
     sudo dnf update -y
     echo
