@@ -54,6 +54,7 @@ fi
 
 # bash script aliases
 alias backup='~/scripts/bash/backup.sh'
+alias bump='~/scripts/bash/bump.sh'
 alias branchlist='~/scripts/bash/branchlist.sh'
 alias clean='~/scripts/bash/clean.sh'
 alias md2rst='~/scripts/bash/md2rst.sh'
@@ -69,17 +70,18 @@ alias room='~/scripts/bash/room.sh'
 alias stack='~/scripts/bash/stack.sh'
 alias tldr='~/scripts/bash/tldr.sh'
 alias t='~/scripts/bash/t.sh'
+alias try='~/scripts/bash/try.sh'
 alias up='~/scripts/bash/up.sh'
 alias ups='~/scripts/bash/ups.sh'
 alias stable='~/scripts/bash/stable.sh'
 
 # python script aliases
-alias check='p3 ~/scripts/python/uptime/uptime.py'
-alias coms='p3 ~/scripts/python/alias.py'
-alias grit='p3 ~/scripts/python/grit/grit.py'
-alias linkcheck='p3 ~/scripts/python/linkcheck/linkcheck.py'
-alias numerate='p3 ~/scripts/python/numerate/numerate.py'
-alias table='p3 ~/scripts/python/table/table.py'
+alias bugs='p3 ~/scripts/python/scripts/bugs.py'
+alias check='p3 ~/scripts/python/scripts/uptime.py'
+alias coms='p3 ~/scripts/python/scripts/alias.py'
+alias grit='p3 ~/scripts/python/scripts/grit.py'
+alias linkcheck='p3 ~/scripts/python/scripts/linkcheck.py'
+alias table='p3 ~/scripts/python/scripts/table.py'
 alias zen='p3 ~/code/python/dailyzen/dailyzen.py'
 
 # added by travis gem
