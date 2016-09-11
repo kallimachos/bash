@@ -7,6 +7,6 @@ if [[ `uname` == 'Linux' ]]; then
     echo
 fi
 
-echo 'pip-review --auto'
+echo 'sudo pip-review --auto'
 sudo pip-review --auto
 echo
