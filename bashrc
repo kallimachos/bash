@@ -56,6 +56,7 @@ else
     alias synergy='setsid synergy >/dev/null 2>&1'
     alias music='setsid vlc >/dev/null 2>&1'
     alias work='fox && komodo && xchat'
+    alias xchat='setsid xchat >/dev/null 2>&1'
 fi
 
 # bash script aliases
