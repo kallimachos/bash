@@ -2,7 +2,7 @@
 
 # Merges local stable branches with upstream and pushes the results to origin.
 
-branches=(v10 v11 v12 v12.2)
+branches=(v10 v11 v12 v13)
 
 echo
 for item in ${branches[@]}; do
