@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Merges local master branches for Rackspace repositories with upstream
+# Merges upstream into local master branches for Rackspace repositories
 # and pushes the results to origin.
 
 for dir in ~/rpcdocs/*; do

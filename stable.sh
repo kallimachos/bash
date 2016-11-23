@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Merges local stable branches with upstream and pushes the results to origin.
+# Merges upstream into local stable branches and pushes the results to origin.
 
 branches=(v10 v11 v12 v13)
 

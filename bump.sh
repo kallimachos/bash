@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Merges local branch for a Rackspace repository with upstream
+# Merges upstream into local branch for a Rackspace repository
 # and pushes the result to origin.
 
 git fetch upstream

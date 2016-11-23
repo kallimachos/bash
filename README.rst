@@ -21,12 +21,13 @@ Lists local branches for all repositories.
 bump.sh
 ~~~~~~~
 
-Merges local branch for a Rackspace repository with upstream and pushes
-the result to origin.
+Merges upstream into local branch for a Rackspace repository and pushes the
+result to origin.
 
 clean.sh
 ~~~~~~~~
-Runs 'git clean -xfd' and 'git remote prune origin' on listed repositories.
+Runs 'git clean -xfd' and 'git remote prune origin' on repositories in listed
+directories.
 
 
 cleanscreen.sh
@@ -98,7 +99,7 @@ Assembles and publishes Docbook XML using publican and csprocessor.
 
 rackup.sh
 ~~~~~~~~~
-Merges local master branches for Rackspace repositories with upstream
+Merges upstream into local master branches for Rackspace repositories
 and pushes the results to origin.
 
 
@@ -126,7 +127,7 @@ string to The_Room.txt.
 
 stable.sh
 ~~~~~~~~~
-Merges local stable branches with upstream and pushes the results to origin.
+Merges upstream into local stable branches and pushes the results to origin.
 
 
 stack.sh
