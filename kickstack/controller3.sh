@@ -16,9 +16,10 @@ retries=0
 
 while [[ "$repeat" = "true" ]]; do
     sleep 5
-    ((retries++))
+    let "retries++"
     echo "Try number $retries..."
-    ssh -o StrictHostKeyChecking=no controller 'bash -s ~/vxlan.sh' && repeat="false"
+    ssh -o StrictHostKeyChecking=no controller 'bash -s ~/vxlan.sh' \
+                                && repeat="false"
 done
 
 exit 0

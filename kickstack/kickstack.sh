@@ -100,7 +100,8 @@ verbose "block = ${block}"
 verbose "verbose = ${verbose}"
 verbose "debug = ${debug}"
 
-ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < network.sh $network $verbose $debug
+ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < network.sh \
+                            $network $verbose $debug
 echo "Rebooting..."
 for i in {60..01}; do
     sleep 1
@@ -111,7 +112,7 @@ repeat="true"
 retries=0
 while [[ "$repeat" = "true" ]]; do
     sleep 5
-    ((retries++))
+    let "retries++"
     echo "Try number $retries..."
     scp -r ~/scripts/bash/kickstack root@$network:kickstack && repeat="false"
 done

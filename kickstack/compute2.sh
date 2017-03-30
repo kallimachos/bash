@@ -16,7 +16,7 @@ retries=0
 
 while [[ "$repeat" = "true" ]]; do
     sleep 5
-    ((retries++))
+    let "retries++"
     echo "Try number $retries..."
     ssh -o StrictHostKeyChecking=no compute && repeat="false"
 done
@@ -41,7 +41,8 @@ fi
 #debug
 
 # install OpenStack packages and upgrade
-yum install centos-release-openstack-ocata python-openstackclient openstack-selinux -y
+yum install centos-release-openstack-ocata python-openstackclient \
+    openstack-selinux -y
 yum upgrade -y
 #debug
 

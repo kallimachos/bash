@@ -11,7 +11,8 @@ if [[ "$debug" = "true" ]]; then
     set -x
 fi
 
-sshpass -p 'stack' ssh-copy-id -i .ssh/id_rsa.pub -o StrictHostKeyChecking=no root@$IP
+sshpass -p 'stack' ssh-copy-id -i .ssh/id_rsa.pub -o StrictHostKeyChecking=no \
+                                                                    root@$IP
 ssh -o StrictHostKeyChecking=no root@$IP
 if [[ "$?" != 0 ]]; then
     echo "ssh key copy failed."
@@ -20,9 +21,9 @@ fi
 #debug
 
 # networking
-sed -i 's/IPADDR.*/IPADDR=10.1.11.31/' /etc/sysconfig/network-scripts/ifcfg-eth0
+sed -i 's/IPADD.*/IPADDR=10.1.11.31/' /etc/sysconfig/network-scripts/ifcfg-eth0
 echo "GATEWAY=10.1.11.1" >> /etc/sysconfig/network-scripts/ifcfg-eth0
-sed -i 's/IPADDR.*/IPADDR=10.1.12.41/' /etc/sysconfig/network-scripts/ifcfg-eth1
+sed -i 's/IPADD.*/IPADDR=10.1.12.41/' /etc/sysconfig/network-scripts/ifcfg-eth1
 #debug
 
 # configure DNS and hosts

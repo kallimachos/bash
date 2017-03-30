@@ -39,7 +39,7 @@ echo "eth0 10.1.11.0/24
 eth0 10.1.13.0/24" > /etc/shorewall/masq
 #debug
 
-echo "###############################################################################
+echo "#########################################################################
 #SOURCE         DEST            POLICY  LOGLEVEL        LIMIT   CONNLIMIT
 \$FW all ACCEPT
 ext all REJECT
@@ -49,8 +49,9 @@ ose1 all ACCEPT
 os1t all ACCEPT" > /etc/shorewall/policy
 #debug
 
-echo "##############################################################################################################################################################
-#ACTION         SOURCE          DEST            PROTO   DPORT   SPORT   ORIGDEST        RATE    USER    MARK    CONNLIMIT       TIME    HEADERS SWITCH  HELPER
+echo "#########################################################################
+#ACTION SOURCE DEST PROTO DPORT SPORT ORIGDEST RATE USER MARK CONNLIMIT TIME \
+HEADERS SWITCH  HELPER
 
 ?SECTION ALL
 ?SECTION ESTABLISHED
@@ -64,7 +65,7 @@ DNAT ext osm1:10.1.11.11  tcp    www
 DNAT ext osm1:10.1.11.11  tcp    6080" > /etc/shorewall/rules
 #debug
 
-echo "###############################################################################
+echo "#########################################################################
 #ZONE           TYPE            OPTIONS         IN_OPTIONS      OUT_OPTIONS
 
 fw firewall
@@ -93,7 +94,8 @@ echo "nameserver 8.8.8.8
 nameserver 8.8.4.4" >> /etc/resolv.conf
 #debug
 
-echo "127.0.0.1  localhost localhost.localdomain localhost4 localhost4.localdomain4
+echo "127.0.0.1  localhost localhost.localdomain localhost4 \
+localhost4.localdomain4
 ::1  localhost localhost.localdomain localhost6 localhost6.localdomain6
 $IP  network-services
 10.1.11.11  controller

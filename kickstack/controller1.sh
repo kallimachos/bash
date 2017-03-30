@@ -12,7 +12,8 @@ if [[ "$debug" = "true" ]]; then
 fi
 
 bash ~/vxlan.sh
-sshpass -p 'stack' ssh-copy-id -i .ssh/id_rsa.pub -o StrictHostKeyChecking=no root@$IP
+sshpass -p 'stack' ssh-copy-id -i .ssh/id_rsa.pub -o StrictHostKeyChecking=no \
+                                                                    root@$IP
 ssh -o StrictHostKeyChecking=no root@$IP
 if [[ "$?" != 0 ]]; then
     echo "ssh key copy failed."
@@ -20,10 +21,10 @@ if [[ "$?" != 0 ]]; then
 fi
 
 # networking
-sed -i 's/IPADDR.*/IPADDR=10.1.11.11/' /etc/sysconfig/network-scripts/ifcfg-eth0
+sed -i 's/IPADD.*/IPADDR=10.1.11.11/' /etc/sysconfig/network-scripts/ifcfg-eth0
 echo "GATEWAY=10.1.11.1" >> /etc/sysconfig/network-scripts/ifcfg-eth0
-sed -i 's/IPADDR.*/IPADDR=10.1.12.21/' /etc/sysconfig/network-scripts/ifcfg-eth1
-sed -i 's/IPADDR.*/IPADDR=10.1.10.21/' /etc/sysconfig/network-scripts/ifcfg-eth2
+sed -i 's/IPADD.*/IPADDR=10.1.12.21/' /etc/sysconfig/network-scripts/ifcfg-eth1
+sed -i 's/IPADD.*/IPADDR=10.1.10.21/' /etc/sysconfig/network-scripts/ifcfg-eth2
 
 echo "#!/bin/bash
 
