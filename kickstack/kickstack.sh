@@ -77,33 +77,56 @@ while true; do
     esac
 done
 
+function verbose {
+    if [[ "$verbose" = "true" ]]; then
+        echo $1
+    fi
+}
+
+function debug {
+    if [[ "$debug" = "true" ]]; then
+        read -p "Press any key to continue... " -n1 -s
+    fi
+}
+
 if [[ "$debug" = "true" ]]; then
     set -x
 fi
 
-if [[ "$verbose" = "true" ]]; then
-    echo -e "\nnetwork = ${network}"
-    echo controller = "${controller}"
-    echo compute = "${compute}"
-    echo block = "${block}"
-    echo verbose = "${verbose}"
-    echo -e debug = "${debug}\n"
-fi
+verbose "network = ${network}"
+verbose "controller = ${controller}"
+verbose "compute = ${compute}"
+verbose "block = ${block}"
+verbose "verbose = ${verbose}"
+verbose "debug = ${debug}"
 
-ssh root@$network 'bash -s' < network.sh $network $verbose $debug
+ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < network.sh $network $verbose $debug
+echo "Rebooting..."
+for i in {60..01}; do
+    sleep 1
+    printf "\r $i"
+done
 
 repeat="true"
 retries=0
-
 while [[ "$repeat" = "true" ]]; do
-    retries+=1
+    sleep 5
+    ((retries++))
     echo "Try number $retries..."
-    ssh root@$network 'bash -s' < controller.sh $controller $verbose $debug && repeat="false"
-sleep 5
+    scp -r ~/scripts/bash/kickstack root@$network:kickstack && repeat="false"
 done
 
-ssh root@$network 'bash -s' < compute.sh $compute $verbose $debug
-ssh root@$network 'bash -s' < block.sh $block $verbose $debug
-
+ssh root@$network 'bash -s' < controller1.sh $controller $verbose $debug
+ssh root@$network 'bash -s' < compute1.sh $compute $verbose $debug
+ssh root@$network 'bash -s' < block1.sh $block $verbose $debug
+for i in {30..01}; do
+    sleep 1
+    printf "\r $i"
+done
+ssh root@$network 'bash -s' < controller2.sh $verbose $debug
+ssh root@$network 'bash -s' < compute2.sh $verbose $debug
+ssh root@$network 'bash -s' < block2.sh $verbose $debug
+ssh root@$network 'bash -s' < controller3.sh $verbose $debug
+ssh root@$network 'bash -s' < compute3.sh $verbose $debug
 set +x
 exit 0
