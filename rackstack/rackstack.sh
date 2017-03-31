@@ -71,28 +71,30 @@ if [[ "$debug" = "true" ]]; then
 fi
 
 if [[ "$os" != "" ]]; then
-    rack servers instance create --name "$name" --image-name "$image" --flavor-id "general1-8" --keypair "Dell"
+    rack servers instance create --name "$name" --image-name "$image" \
+    --flavor-id "general1-8" --keypair "Dell"
 else
     echo -e "\nERROR: You must specify an operating system.\n"
     exit 1
 fi
 
+echo "Building server..."
 if [[ "$os" = "ubuntu" ]]; then
-    delay=120
+    for i in {180..001}; do
+        sleep 1
+        printf "\r $i"
+    done
 else
-    delay=60
+    for i in {60..01}; do
+        sleep 1
+        printf "\r $i"
+    done
 fi
 
-echo "Building server..."
-for ((i=$delay; i>=0; i--)); do
-    sleep 1
-    printf "\r $i"
-done
-
-IP=$(rack servers instance get --name "$name" | grep "PublicIPv4" | sed 's/PublicIPv4\s*//')
+IP=$(rack servers instance get --name "$name" | grep "PublicIPv4" \
+    | sed 's/PublicIPv4\s*//')
 echo -e "\nIP Address: $IP"
-
-ssh -o StrictHostKeyChecking=no root@$IP 'bash -s' < "$os".sh
-
+ssh -o StrictHostKeyChecking=no root@$IP 'bash -s' \
+    < ~/scripts/bash/rackstack/"$os".sh
 set +x
 exit 0
