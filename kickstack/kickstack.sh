@@ -137,17 +137,25 @@ while [[ "$repeat" = "true" ]]; do
     scp -r ~/scripts/bash/kickstack root@$network:kickstack && repeat="false"
 done
 
-ssh root@$network 'bash -s' < controller1.sh $controller $verbose $debug
-ssh root@$network 'bash -s' < compute1.sh $compute $verbose $debug
-ssh root@$network 'bash -s' < block1.sh $block $verbose $debug
+ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < controller1.sh \
+                            $controller $verbose $debug
+ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < compute1.sh \
+                            $compute $verbose $debug
+ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < block1.sh \
+                            $block $verbose $debug
 for i in {30..01}; do
     sleep 1
     printf "\r $i"
 done
-ssh root@$network 'bash -s' < controller2.sh $verbose $debug
-ssh root@$network 'bash -s' < compute2.sh $verbose $debug
-ssh root@$network 'bash -s' < block2.sh $verbose $debug
-ssh root@$network 'bash -s' < controller3.sh $verbose $debug
-ssh root@$network 'bash -s' < compute3.sh $verbose $debug
+ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < controller2.sh \
+                            $verbose $debug
+ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < compute2.sh \
+                            $verbose $debug
+ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < block2.sh \
+                            $verbose $debug
+ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < controller3.sh \
+                            $verbose $debug
+ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < compute3.sh \
+                            $verbose $debug
 set +x
 exit 0
