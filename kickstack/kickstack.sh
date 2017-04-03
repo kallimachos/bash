@@ -14,6 +14,15 @@ Usage: kickstack [node IPs]\n
 verbose="false"
 debug="false"
 
+network=$(rack servers instance get --name "network-services" \
+        | grep "PublicIPv4" | sed 's/PublicIPv4\s*//')
+controller=$(rack servers instance list-addresses --name "controller" \
+        | grep "management" | sed 's/management\s*4\s*//')
+compute=$(rack servers instance list-addresses --name "compute" \
+        | grep "management" | sed 's/management\s*4\s*//')
+block=$(rack servers instance list-addresses --name "block" \
+        | grep "management" | sed 's/management\s*4\s*//')
+
 getopt --test > /dev/null
 if [[ $? -ne 4 ]]; then
     echo "I’m sorry, `getopt --test` failed in this environment."
@@ -99,6 +108,17 @@ verbose "compute = ${compute}"
 verbose "block = ${block}"
 verbose "verbose = ${verbose}"
 verbose "debug = ${debug}"
+
+nodes=(controller compute block)
+reserved=(10.1.11.11 10.1.11.21 10.1.11.31)
+for node in ${nodes[@]}; do
+    for addr in ${reserved[@]}; do
+        if [[ "${!node}" = "$addr" ]]; then
+            echo -e "ERROR: $node node uses reserved management IP $addr\n"
+            exit 1
+        fi
+    done
+done
 
 ssh -o StrictHostKeyChecking=no root@$network 'bash -s' < network.sh \
                             $network $verbose $debug
