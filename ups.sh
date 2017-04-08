@@ -8,7 +8,6 @@ if [[ `uname` == 'Linux' ]]; then
     echo 'sudo dnf update -y'
     sudo dnf update -y
     echo -e "\n----------\n"
-    echo
 fi
 
 echo 'sudo pip-review --auto'
