@@ -4,8 +4,10 @@
 if [[ `uname` == 'Linux' ]]; then
     echo 'sudo freshclam'
     sudo freshclam
-    sudo dnf update -y
+    echo -e "\n----------\n"
     echo 'sudo dnf update -y'
+    sudo dnf update -y
+    echo -e "\n----------\n"
     echo
 fi
 
