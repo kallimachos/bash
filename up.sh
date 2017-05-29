@@ -11,11 +11,11 @@ echo $div
 bash ~/scripts/bash/stack.sh
 echo
 
-echo $div
-echo 'Rackspace Repositories'
-echo $div
-bash ~/scripts/bash/rackup.sh
-echo
+#echo $div
+#echo 'Rackspace Repositories'
+#echo $div
+#bash ~/scripts/bash/rackup.sh
+#echo
 
 echo $div
 echo 'My GitHub Repositories'
