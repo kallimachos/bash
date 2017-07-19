@@ -3,7 +3,7 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 # Set prompt
@@ -20,7 +20,7 @@ PS1="[\u \W]\$ "
 # export HTML_TIDY=/home/bmoss/.tidy
 
 # Source git completion
-source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+. /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
 
 # User specific aliases and functions
 alias ...='cd ../..'
