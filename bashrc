@@ -39,6 +39,7 @@ alias p='python'
 alias p3='python3'
 alias pm='ps -A | grep mongo'
 alias sbash='source ~/.bashrc'
+alias v='vagrant'
 alias yak='yakstack'
 
 # Handle differences between Mac and Linux OS
