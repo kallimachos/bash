@@ -3,24 +3,24 @@
 # Initializes a new git repository for a python project.
 
 abort() {
-  printf "\033[31mError: $@\033[0m\n" && exit 1
+    printf "\033[31mError: $@\033[0m\n" && exit 1
 }
 
 display_help() {
-  cat <<-help
+    cat <<-help
 
-  Usage: newpy [options]
+    Usage: newpy [options]
 
-  Commands:
+    Commands:
 
-    newpy           Start interactive Python repository creator
+        newpy           Start interactive Python repository creator
 
-  Options:
+    Options:
 
-    -h, --help      Display help information
+        -h, --help      Display help information
 
 help
-  exit 0
+    exit 0
 }
 
 repo_name() {
@@ -43,12 +43,13 @@ repo_name() {
 git_config() {
     username=`git config github.username`
     if [ "$username" = "" ]; then
-        abort "Could not find username.\nRun 'git config --global github.username <username>'"
+        abort "Username not found. \
+Run 'git config --global github.username <username>'"
     fi
 
     token=`git config github.token`
     if [ "$token" = "" ]; then
-        abort "Could not find token, run 'git config --global github.token <token>'"
+        abort "Token not found. Run 'git config --global github.token <token>'"
     fi
 }
 
@@ -60,7 +61,9 @@ template() {
         cd $template && git clean -xfd
         rsync -a --exclude='MANIFEST' --exclude='.git/' ./ $repo_dir
         cd $repo_dir
-        sed -i "" "s/template/$repo_name/g" README.rst setup.py tox.ini template/__init__.py template/template.py tests/test.py tools/deploy.sh doc/index.rst doc/conf.py
+        sed -i "" "s/template/$repo_name/g" README.rst setup.py tox.ini \
+        template/__init__.py template/template.py tests/test.py \
+        tools/deploy.sh doc/index.rst doc/conf.py
         mv template/template.py template/$repo_name.py
         mv template $repo_name
     else
@@ -83,7 +86,8 @@ create_repo() {
     echo " done."
 
     echo -n "Pushing local code to remote ..."
-    git remote add origin git@github.com:$username/$repo_name.git > /dev/null 2>&1
+    git remote add origin git@github.com:$username/$repo_name.git \
+    > /dev/null 2>&1
     git push -u origin master > /dev/null 2>&1
     echo " done."
 }
@@ -109,12 +113,13 @@ create_ghpage() {
 # Handle arguments
 
 if test $# -gt 0; then
-  display_help
+    display_help
 else
-  repo_name
-  git_config
-  template
-  create_repo
-  create_ghpage
-  echo "Please update README.rst, setup.py, and enable linkcheck and Travis builds if required."
+    repo_name
+    git_config
+    template
+    create_repo
+    create_ghpage
+    echo "Please update README.rst, setup.py, and enable linkcheck and Travis \
+builds if required."
 fi
