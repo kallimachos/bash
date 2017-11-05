@@ -92,6 +92,15 @@ pdf_download.sh
 Downloads all PDF books for CloudForms Management Engine.
 
 
+ptest.sh
+~~~~~~~~
+Simple wrapper that runs:
+
+-  isort -c
+-  pep257
+-  flake8
+
+
 publish.sh
 ~~~~~~~~~~
 Assembles and publishes Docbook XML using publican and csprocessor.
