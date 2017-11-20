@@ -11,3 +11,11 @@ for dir in ~/mongodb/*; do
         git push origin master
     fi
 done
+for dir in ~/mongodb/docs/*; do
+    if test -d $dir && test -e $dir/.git; then
+        cd $dir
+        git fetch upstream
+        git merge upstream/master
+        git push origin master
+    fi
+done
