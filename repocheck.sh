@@ -3,7 +3,7 @@
 # Print 'git status -s -b' of repos in the listed directories if they have
 # uncommitted changes or if they are not on the master branch.
 
-repos=(openstack mongodb code code/python scripts)
+repos=(openstack mongodb mongodb/docs code code/python scripts)
 
 echo
 for item in ${repos[@]}; do

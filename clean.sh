@@ -13,7 +13,7 @@ else
 fi
 echo
 
-repos=(openstack mongodb code code/python scripts)
+repos=(openstack mongodb mongodb/docs code code/python scripts)
 
 for item in ${repos[@]}; do
     root=~/$item/*
