@@ -26,14 +26,12 @@ help
 repo_name() {
     dir_name=`basename $(pwd)`
 
-    echo -n "Repo name (hit enter to use '$dir_name')? "
+    echo -n "Repo name (hit enter to use current directory)? "
     read repo_name
 
     if [ "$repo_name" = "" ]; then
-        repo_name=$dir_name
-    fi
-
-    if [ "$repo_name" != $dir_name ]; then
+        repo_dir=$(pwd)
+    else
         mkdir -p $repo_name
         cd $repo_name
         repo_dir=$(pwd)
@@ -118,8 +116,8 @@ else
     repo_name
     git_config
     template
-    create_repo
-    create_ghpage
+    #create_repo
+    #create_ghpage
     echo "Please update README.rst, setup.py, and enable linkcheck and Travis \
 builds if required."
 fi
