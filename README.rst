@@ -24,6 +24,7 @@ bump.sh
 Merges upstream into local branch for a Rackspace repository and pushes the
 result to origin.
 
+
 clean.sh
 ~~~~~~~~
 Runs 'git clean -xfd' and 'git remote prune origin' on repositories in listed
@@ -34,6 +35,11 @@ cleanscreen.sh
 ~~~~~~~~~~~~~~
 Removes whitespace between <screen> tags and swaps invalid characters for
 valid XML codes.
+
+
+dev
+~~~
+Preps environment for development
 
 
 devstack
