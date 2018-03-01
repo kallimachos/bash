@@ -116,8 +116,8 @@ else
     repo_name
     git_config
     template
-    #create_repo
-    #create_ghpage
+    create_repo
+    create_ghpage
     echo "Please update README.rst, setup.py, and enable linkcheck and Travis \
 builds if required."
 fi
