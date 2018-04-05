@@ -8,7 +8,8 @@ echo
 echo $div
 echo 'OpenStack Repositories'
 echo $div
-bash ~/scripts/bash/stack.sh
+echo 'Skipping...'
+# bash ~/scripts/bash/stack.sh
 echo
 
 echo $div
@@ -21,4 +22,10 @@ echo $div
 echo 'My GitHub Repositories'
 echo $div
 bash ~/scripts/bash/mygit.sh
+echo
+
+echo $div
+echo 'Mac Updates'
+echo $div
+softwareupdate -l
 echo
