@@ -23,9 +23,3 @@ echo 'My GitHub Repositories'
 echo $div
 bash ~/scripts/bash/mygit.sh
 echo
-
-echo $div
-echo 'Mac Updates'
-echo $div
-softwareupdate -l
-echo
