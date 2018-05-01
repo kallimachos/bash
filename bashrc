@@ -3,7 +3,7 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
+	. /etc/bashrc
 fi
 
 # Set prompt
@@ -19,8 +19,11 @@ PS1="[\u \W]\$ "
 # Set Tidy config file
 # export HTML_TIDY=/home/bmoss/.tidy
 
+# Enable pyenv shell
+eval "$(pyenv init -)";
+
 # Source git completion
-. /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
 
 # User specific aliases and functions
 alias ...='cd ../..'
@@ -76,15 +79,18 @@ alias backup='~/scripts/bash/backup.sh'
 alias bump='~/scripts/bash/bump.sh'
 alias branchlist='~/scripts/bash/branchlist.sh'
 alias clean='~/scripts/bash/clean.sh'
+alias dev='~/scripts/bash/dev.sh'
 alias kickstack='~/scripts/bash/kickstack/kickstack.sh'
 alias md2rst='~/scripts/bash/md2rst.sh'
 alias xml2rst='~/scripts/bash/xml2rst.sh'
+alias mac='~/scripts/bash/mac.sh'
 alias mygit='~/scripts/bash/mygit.sh'
 alias newpy='~/scripts/bash/newpy.sh'
 alias rackstack='~/scripts/bash/rackstack/rackstack.sh'
 alias mup='~/scripts/bash/mup.sh'
 alias ptest='~/scripts/bash/ptest.sh'
 alias repocheck='~/scripts/bash/repocheck.sh'
+alias rc='~/scripts/bash/repocheck.sh'
 alias room='~/scripts/bash/room.sh'
 alias stack='~/scripts/bash/stack.sh'
 alias t='~/scripts/bash/t.sh'
