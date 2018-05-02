@@ -3,7 +3,7 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 # Set prompt
@@ -23,7 +23,8 @@ PS1="[\u \W]\$ "
 eval "$(pyenv init -)";
 
 # Source git completion
-source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+source /Library/Developer/CommandLineTools/usr/share/git-core\
+/git-completion.bash
 
 # User specific aliases and functions
 alias ...='cd ../..'
