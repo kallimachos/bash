@@ -135,6 +135,12 @@ Opens The_Room.txt if no argument; counts words if arg = wc; else appends
 string to The_Room.txt.
 
 
+rump.sh
+~~~~~~~
+Merges upstream develop branch into local develop branch for a repository and
+pushes the result to origin.
+
+
 setup.py
 ~~~~~~~~
 Opens The_Room.txt if no argument; counts words if arg = wc; else appends
