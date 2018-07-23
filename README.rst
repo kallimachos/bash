@@ -98,6 +98,12 @@ pdf_download.sh
 Downloads all PDF books for CloudForms Management Engine.
 
 
+pfmt.sh
+~~~~~~~
+Format python files according to style.yapf. Use black to normalize quotation
+marks.
+
+
 ptest.sh
 ~~~~~~~~
 Simple wrapper that runs:
