@@ -5,12 +5,12 @@
 div='======================'
 
 echo
-echo $div
-echo 'OpenStack Repositories'
-echo $div
-echo 'Skipping...'
+# echo $div
+# echo 'OpenStack Repositories'
+# echo $div
+# echo 'Skipping...'
 # bash ~/scripts/bash/stack.sh
-echo
+# echo
 
 echo $div
 echo 'MongoDB Repositories'
