@@ -5,7 +5,7 @@
 
 bash ~/scripts/bash/repocheck.sh
 
-repos=(openstack mongodb mongodb/docs code code/python scripts)
+repos=(mongodb mongodb/docs code code/python scripts)
 
 echo -n "Check what files will be cleaned? (y/n): "
 read check
