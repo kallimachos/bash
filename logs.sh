@@ -15,12 +15,12 @@ echo
 echo $div
 echo 'kbdash'
 echo $div
-kubectl logs -l release=kbdash
+kubectl logs --tail=20 -l release=kbdash
 echo
 
 echo
 echo $div
 echo 'kbtools'
 echo $div
-kubectl logs -l release=kbtools
+kubectl logs --tail=20 -l release=kbtools
 echo
