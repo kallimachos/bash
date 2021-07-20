@@ -22,5 +22,5 @@ echo
 echo $div
 echo 'kbtools'
 echo $div
-kubectl logs --tail=20 -l release=kbtools
+kubectl logs --tail=10 -l release=kbtools
 echo
