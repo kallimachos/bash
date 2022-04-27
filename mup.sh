@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# Merges upstream into local master branches for MongoDB repositories
-# and pushes the results to origin.
+# Git pull or merge upstream into local master branches for MongoDB repositories
+# then push result to origin if required.
 
 for dir in ~/mongodb/*; do
-    if test -d $dir && test -e $dir/.git; then
+    if [[ "$dir" == *"kb"* ]]; then
+        cd $dir
+        git pull
+    elif test -d $dir && test -e $dir/.git; then
         cd $dir
         git fetch upstream
         git merge upstream/master
