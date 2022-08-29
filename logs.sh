@@ -21,6 +21,13 @@ echo
 
 echo
 echo $div
+echo 'kbsearch'
+echo $div
+kubectl logs --tail=10 -l release=search
+echo
+
+echo
+echo $div
 echo 'kbtools'
 echo $div
 kubectl logs --tail=10 -l release=kbtools
@@ -39,6 +46,13 @@ echo $div
 echo 'kbdash'
 echo $div
 kubectl logs --tail=10 -l release=kbdash
+echo
+
+echo
+echo $div
+echo 'kbsearch'
+echo $div
+kubectl logs --tail=10 -l release=search
 echo
 
 echo
