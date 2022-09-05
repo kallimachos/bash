@@ -86,7 +86,7 @@ create_repo() {
     echo -n "Pushing local code to remote ..."
     git remote add origin git@github.com:$username/$repo_name.git \
     > /dev/null 2>&1
-    git push -u origin master > /dev/null 2>&1
+    git push -u origin main > /dev/null 2>&1
     echo " done."
 }
 
@@ -102,7 +102,7 @@ create_ghpage() {
         git commit -a -m "First pages commit"
         git push -u origin gh-pages > /dev/null 2>&1
         echo "gh-page available at http://kallimachos.github.io/$repo_name."
-        git checkout master
+        git checkout main
     else
         echo "No gh-page created."
     fi

@@ -4,5 +4,5 @@
 # result to origin.
 
 git fetch upstream
-git merge upstream/master
-git push origin master
+git merge upstream/main
+git push origin main

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Git pull or merge upstream into local master branches for MongoDB repositories
+# Git pull or merge upstream into local main branches for MongoDB repositories
 # then push result to origin if required.
 
 for dir in ~/mongodb/*; do
@@ -13,6 +13,6 @@ done
 # if test -d $dir && test -e $dir/.git; then
 #     cd $dir
 #     git fetch upstream
-#     git merge upstream/master
-#     git push origin master
+#     git merge upstream/main
+#     git push origin main
 # fi
