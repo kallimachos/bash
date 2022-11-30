@@ -11,8 +11,8 @@ echo $div
 bash ~/scripts/bash/mup.sh
 echo
 
-echo $div
-echo 'My GitHub Repositories'
-echo $div
-bash ~/scripts/bash/mygit.sh
-echo
+# echo $div
+# echo 'My GitHub Repositories'
+# echo $div
+# bash ~/scripts/bash/mygit.sh
+# echo
