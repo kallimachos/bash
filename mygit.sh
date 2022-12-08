@@ -8,7 +8,7 @@ for item in ${repos[@]}; do
     root=~/$item/*
     for dir in $root; do
         if test -d $dir && test -e $dir/.git; then
-            cd $dir && git pull
+            cd $dir && git pull --prune
         fi
 
     done

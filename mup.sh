@@ -5,8 +5,7 @@
 
 for dir in ~/mongodb/*; do
     if test -e $dir/.git; then
-        cd $dir
-        git pull
+        cd $dir && git pull --prune
     fi
 done
 
