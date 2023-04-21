@@ -1,18 +1,20 @@
 #!/bin/bash
 
-# Runs the listed 'git pull' scripts.
+# Runs 'git pull' on all my personal git repositories.
 
 div='======================'
+repos=(code code/python scripts)
 
-echo
 echo $div
-echo 'MongoDB Repositories'
+echo 'My GitHub Repositories'
 echo $div
-bash ~/scripts/bash/mup.sh
-echo
+for item in ${repos[@]}; do
+    root=~/$item/*
+    for dir in $root; do
+        if test -d $dir && test -e $dir/.git; then
+            cd $dir && git pull --prune
+        fi
 
-# echo $div
-# echo 'My GitHub Repositories'
-# echo $div
-# bash ~/scripts/bash/mygit.sh
-# echo
+    done
+done
+echo
