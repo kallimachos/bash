@@ -5,6 +5,7 @@
 div='======================'
 repos=(code code/python scripts)
 
+echo
 echo $div
 echo 'My GitHub Repositories'
 echo $div
@@ -12,9 +13,10 @@ for item in ${repos[@]}; do
     root=~/$item/*
     for dir in $root; do
         if test -d $dir && test -e $dir/.git; then
-            cd $dir && git pull --prune
+            cd $dir && git pull --prune &
         fi
 
     done
 done
+wait
 echo

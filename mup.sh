@@ -10,9 +10,10 @@ echo 'MongoDB Repositories'
 echo $div
 for dir in ~/mongodb/*; do
     if test -e $dir/.git; then
-        cd $dir && git pull --prune
+        cd $dir && git pull --prune &
     fi
 done
+wait
 echo
 
 # if test -d $dir && test -e $dir/.git; then
