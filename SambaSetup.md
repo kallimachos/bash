@@ -5,7 +5,13 @@ Adapted from [Filesharing with the Raspberry Pi](https://raspberrypi-guide.githu
 ## scp
 
 ```
-scp <originfile> pi@<Raspberry Pi IP address>:<destinationfile>
+scp -r ~/Music/ pi@pi:/pimusic/
+```
+
+## rsync
+
+```
+rsync --update -Pr --exclude=inrainbows.zip ~/Music/ pi@pi:/pimusic/
 ```
 
 ## Samba
