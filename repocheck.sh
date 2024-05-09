@@ -4,7 +4,7 @@
 # uncommitted changes or if they are not on the master or main branch.
 
 repos=(mongodb mongodb/docs code code/python scripts)
-branches=("## master...origin/master" "## main...origin/main")
+branches=("## main...origin/main", "## staging...origin/staging")
 
 echo
 for item in ${repos[@]}; do

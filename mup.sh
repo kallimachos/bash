@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Git pull or merge upstream into local main branches for MongoDB repositories
-# then push result to origin if required.
+# Git pull origin into local tracking branches for MongoDB repositories
 div='======================'
 
 echo
@@ -9,16 +8,11 @@ echo $div
 echo 'MongoDB Repositories'
 echo $div
 for dir in ~/mongodb/*; do
-    if test -e $dir/.git; then
+    if [[ -d $dir && -e $dir/.git && $(basename $dir) == ts* ]]; then
         cd $dir && git pull --prune &
+    elif [[ -d $dir && -e $dir/.git && $(basename $dir) == kb* ]]; then
+        cd $dir && git checkout main && git pull && git checkout staging && git pull --prune &
     fi
 done
 wait
 echo
-
-# if test -d $dir && test -e $dir/.git; then
-#     cd $dir
-#     git fetch upstream
-#     git merge upstream/main
-#     git push origin main
-# fi
