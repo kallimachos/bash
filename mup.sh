@@ -8,10 +8,8 @@ echo $div
 echo 'MongoDB Repositories'
 echo $div
 for dir in ~/mongodb/*; do
-    if [[ -d $dir && -e $dir/.git && $(basename $dir) == ts* ]]; then
+    if [[ -d $dir && -e $dir/.git ]]; then
         cd $dir && git pull --prune &
-    elif [[ -d $dir && -e $dir/.git && $(basename $dir) == kb* ]]; then
-        cd $dir && git checkout main && git pull && git checkout staging && git pull --prune &
     fi
 done
 wait
