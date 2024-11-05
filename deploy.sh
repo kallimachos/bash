@@ -2,11 +2,11 @@
 
 # Push main to prod
 
-prod
+git checkout prod
 git pull
-main
+git checkout main
 git pull
 git push origin main:prod
-prod
+git checkout prod
 git pull
-main
+git checkout main
