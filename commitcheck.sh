@@ -2,7 +2,7 @@
 
 # Show commits in main that are not in prod
 
-repos=(kbapi kbdash kbhub kbtest kbtools)
+repos=(kbapi kbdash kbhub kbstatus kbtools)
 
 echo
 for repo in ${repos[@]}; do
