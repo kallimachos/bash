@@ -3,7 +3,7 @@
 # Display logs for Kanopy apps
 
 div='======================'
-repos=(kb kbapi kbcron kbdash kbfeedback kbhub kbsearch kbtools)
+repos=(kb kbapi kbcron kbdash kbhub kbstatus)
 
 kubectl config use-context api.staging.corp.mongodb.com
 echo -e '\nSTAGING'
